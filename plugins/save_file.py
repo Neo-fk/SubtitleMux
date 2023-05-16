@@ -10,6 +10,7 @@ import time
 from chat import Chat
 from config import Config
 from pyrogram import Client, filters
+from pyrogram.types import Message, InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from helper_func.progress_bar import progress_bar
 from helper_func.dbhelper import Database as Db
 import re
@@ -17,7 +18,24 @@ import requests
 from urllib.parse import quote, unquote
 
 db = Db()
-
+chat_id = message.from_user.id
+retext = "/softmux"
+getext ="/softremove"
+HELP_DICT["SoftMux"] = await client.send_message(chat_id, text=retext)
+HELP_DICT["SoftRemove"] = await client.send_message(chat_id, text=getext)
+def help_btns(user):
+    but_rc = []
+    buttons = []
+    hd_ = list(natsorted(HELP_DICT.keys()))
+    for i in hd_:
+        but_rc.append(InlineKeyboardButton(i, callback_data=f"help_{i}_{user}"))
+        if len(but_rc)==2:
+            buttons.append(but_rc)
+            but_rc = []
+    if len(but_rc)!=0:
+        buttons.append(but_rc)
+    return InlineKeyboardMarkup(buttons)
+  
 async def _check_user(filt, c, m):
     chat_id = str(m.from_user.id)
     if chat_id in Config.ALLOWED_USERS:
@@ -76,7 +94,7 @@ async def save_doc(client, message):
         os.rename(Config.DOWNLOAD_DIR+'/'+tg_filename,Config.DOWNLOAD_DIR+'/'+filename)
         db.put_sub(chat_id, filename)
         if db.check_video(chat_id):
-            text = Chat.CHOOSE_CMD
+            text = Chat.CHOOSE_CMD 
         else:
             text = 'Subtitle file downloaded.\nNow send Video File!'
 
@@ -95,6 +113,7 @@ async def save_doc(client, message):
             text = 'Video file downloaded successfully.\nNow send Subtitle file!'
         await client.edit_message_text(
             text = text,
+            reply_markup=buttons,
             chat_id = chat_id,
             message_id = downloading.message_id
         )
