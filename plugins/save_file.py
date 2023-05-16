@@ -18,7 +18,6 @@ import requests
 from urllib.parse import quote, unquote
 
 db = Db()
-chat_id = message.from_user.id
 retext = "/softmux"
 getext ="/softremove"
 HELP_DICT["SoftMux"] = client.send_message(chat_id, text=retext)
