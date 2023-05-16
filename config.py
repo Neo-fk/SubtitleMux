@@ -3,11 +3,11 @@ import os
 
 class Config:
 
-    BOT_TOKEN = os.environ.get('BOT_TOKEN', None)
-    APP_ID = os.environ.get('APP_ID', None)
-    API_HASH = os.environ.get('API_HASH', None)
+    BOT_TOKEN = "5410320498:AAGAPfA_Wnl4ZQRpCIWhxQR008O97_aIf7I"
+    APP_ID = 10247139
+    API_HASH = "96b46175824223a33737657ab943fd6a"
 
     #comma seperated user id of users who are allowed to use
-    ALLOWED_USERS = [x.strip(' ') for x in os.environ.get('ALLOWED_USERS','1098504493').split(',')]
+    ALLOWED_USERS = [x.strip(' ') for x in ('1098504493,1443454117').split(',')]
 
     DOWNLOAD_DIR = 'downloads'
