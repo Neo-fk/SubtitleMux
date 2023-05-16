@@ -21,8 +21,8 @@ db = Db()
 chat_id = message.from_user.id
 retext = "/softmux"
 getext ="/softremove"
-HELP_DICT["SoftMux"] = await client.send_message(chat_id, text=retext)
-HELP_DICT["SoftRemove"] = await client.send_message(chat_id, text=getext)
+HELP_DICT["SoftMux"] = client.send_message(chat_id, text=retext)
+HELP_DICT["SoftRemove"] = client.send_message(chat_id, text=getext)
 def help_btns(user):
     but_rc = []
     buttons = []
