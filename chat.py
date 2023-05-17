@@ -5,9 +5,9 @@ class Chat:
 
 <b>Send me a Telegram file to begin</b>
 
-/help for more details..
+Send /help for more details..
 
-Credits :- @mohdsabahat
+Developed by @Neko_Bots
     """
 
     HELP_USER = "??"
