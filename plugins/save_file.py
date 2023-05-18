@@ -112,7 +112,6 @@ async def save_doc(client, message):
             text = 'Video file downloaded successfully.\nNow send Subtitle file!'
         await client.edit_message_text(
             text = text,
-            reply_markup=buttons,
             chat_id = chat_id,
             message_id = downloading.message_id
         )
