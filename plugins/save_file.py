@@ -18,10 +18,6 @@ import requests
 from urllib.parse import quote, unquote
 
 db = Db()
-retext = "/softmux"
-getext ="/softremove"
-HELP_DICT["SoftMux"] = client.send_message(chat_id, text=retext)
-HELP_DICT["SoftRemove"] = client.send_message(chat_id, text=getext)
 def help_btns(user):
     but_rc = []
     buttons = []
