@@ -17,10 +17,11 @@ async def _check_user(filt, c, m):
 
 check_user = filters.create(_check_user)
 
-@Client.on_message(filters.command('softmux') & check_user & filters.private)
+@Client.on_message(filters.command('/start softmux') & check_user & filters.private)
 async def softmux(client, message):
 
     chat_id = message.from_user.id
+    chat_id = chat_id.replace("/start ", "")
     og_vid_filename = db.get_vid_filename(chat_id)
     og_sub_filename = db.get_sub_filename(chat_id)
     text = ''
