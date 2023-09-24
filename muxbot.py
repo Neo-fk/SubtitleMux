@@ -26,12 +26,13 @@ if __name__ == '__main__':
     if not os.path.isdir(Config.DOWNLOAD_DIR):
         os.mkdir(Config.DOWNLOAD_DIR)
 
-    
-app = pyrogram (
-        name="merge-bot",
-        api_hash=Config.API_HASH,
-        api_id=int(Config.TELEGRAM_API),
-        bot_token=Config.BOT_TOKEN,
-        plugins=dict(root="plugins"),
+plugins = dict(root='plugins')
+
+    app = pyrogram.Client(
+        'Subtitle Muxer',
+        bot_token = Config.BOT_TOKEN,
+        api_id=int(Config.APP_ID),
+        api_hash = Config.API_HASH,
+        plugins = plugins
 )
     app.run()
